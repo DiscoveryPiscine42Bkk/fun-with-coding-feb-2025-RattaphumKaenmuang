@@ -1,0 +1,24 @@
+.parallax {
+    display: flex;
+    flex-direction: column;
+    
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    text-align: center;
+}
+
+#img1 {
+    background-image: url("https://i.ytimg.com/vi/43yz0udLpnU/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AGMAoAC4AOKAgwIABABGGUgZShlMA8=&rs=AOn4CLAxrLJRs95yNfeoTs_ks9cVXrasGA");
+}
+
+#img2 {
+    background-image: url("https://img-cdn.tnwcdn.com/image?fit=1280%2C720&url=https%3A%2F%2Fcdn0.tnwcdn.com%2Fwp-content%2Fblogs.dir%2F1%2Ffiles%2F2020%2F01%2Fq3V3Xe3.jpg&signature=877938d1db7314da642c99678e80700c");
+}
+
+.text {
+    color: white;
+    margin-top: 300px;
+}
