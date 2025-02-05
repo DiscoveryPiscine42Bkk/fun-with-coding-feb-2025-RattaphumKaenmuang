@@ -4,8 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TODO</title>
+    <style>
+        html, body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        #ft_list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            padding: 10px 0;
+            gap: 5px;
+
+            width: 20%;
+            min-height: 20%;
+
+            border: 1px solid black;
+            border-radius: 25px;
+        }
+
+        #ft_list .todo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 90%;
+            min-height: 8vh;
+            text-align: center;
+            border: 1px solid black;
+            border-radius: 25px;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>TODO</h1>
+    <div id="ft_list">
+        <div class="todo">Setyor</div>
+        <div class="todo">Setyor</div>
+        <div class="todo">Setyor</div>
+    </div>
+    <button onclick="newTodo()">New</button>
 </body>
 </html>
