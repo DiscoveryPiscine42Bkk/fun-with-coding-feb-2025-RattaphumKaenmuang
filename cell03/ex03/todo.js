@@ -24,12 +24,13 @@ function newTodo() {
 function deleteTodo() {
     if (confirm('Delete this todo?')) {
         this.parentElement.removeChild(this);
+        saveTodoCookies();
     }
 }
 
 //I am going to cry
 
-function splitCookies() { // -> {dataname: data, dataname: data}
+function splitCookies() { // -> {dataname: data, dataname: data} (encoded)
     const cookies = document.cookie.split(';');
     const result = {};
     for (let i = 0; i < cookies.length; i++) {
@@ -37,6 +38,19 @@ function splitCookies() { // -> {dataname: data, dataname: data}
         result[cookie[0].trim()] = cookie[1];
     }
     return result;
+}
+
+// I was going to make it return just todos but I might as well make it universal.
+function decodeCookies(cookies) { // -> {dataname: data, dataname: data} (decoded)
+    const decodedCookies = {};
+    for (const key in cookies) {
+        try {
+            decodedCookies[key] = JSON.parse(atob(cookies[key])); //decode
+        } catch (e) {
+            decodedCookies[key] = cookies[key];
+        }
+    }
+    return decodedCookies;
 }
 
 function saveTodoCookies() {
@@ -48,13 +62,13 @@ function saveTodoCookies() {
 
     const encodedTodos = btoa(JSON.stringify(todos));   //encode
     document.cookie = 'todos=' + encodedTodos + "; path=/";
-
 }
 
 function loadTodoCookies() {
-    const cookies = splitCookies();
+    const undecoded_cookies = splitCookies();
+    const cookies = decodeCookies(undecoded_cookies);
     if (cookies.todos) {
-        const todos = JSON.parse(atob(cookies.todos));  //decode
+        const todos = cookies.todos;
         for (let i = 0; i < todos.length; i++) {
             const todo = createTodo(todos[i]);
             document.getElementById('ft_list').appendChild(todo);
