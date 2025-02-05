@@ -56,8 +56,6 @@
         function useMe() {
             alert("Please, use me...");
         }
-
-        setInterval(useMe, 30000);
     </script>
 </head>
 <body>
@@ -79,7 +77,8 @@
         <br>
         <button type="submit">Try me!</button>
     </form>
-
-    <script src="calc.js"></script>
+    <script>
+        setInterval(useMe, 30000);
+    </script>
 </body>
 </html>
