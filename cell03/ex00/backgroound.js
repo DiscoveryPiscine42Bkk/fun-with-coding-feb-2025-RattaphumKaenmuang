@@ -12,6 +12,5 @@ function changeBGCol() {
 }
 
 function buttonFunc() {
-    increaseButtonSize();
     changeBGCol();
 }
