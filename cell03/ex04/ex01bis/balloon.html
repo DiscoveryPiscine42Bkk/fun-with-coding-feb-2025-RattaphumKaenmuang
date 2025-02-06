@@ -4,9 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./balloon.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #balloon {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgb(255, 0, 0);
+        }
+    </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="./balloon.js"></script>
+    <script>
+        $(document).ready(function() {    
+            function changeBalloonCol(balloon, dir) { //dir = 1 or -1
+                const colors = ['rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(0, 0, 255)'];
+                const currentColor = balloon.css('background-color');
+                
+                let color_idx = (colors.indexOf(currentColor) + dir + colors.length) % colors.length;
+                balloon.css('background-color', colors[color_idx]);
+            }
+
+            function inflate(balloon) {
+                const currentWidth = balloon.css('width');
+                const currentHeight = balloon.css('height');
+
+                let newWidth = parseFloat(currentWidth) + 10 + 'px';
+                let newHeight = parseFloat(currentHeight) + 10 + 'px';
+
+                
+                if (parseFloat(newWidth) > 420) {
+                    newWidth = 200 + 'px';
+                    newHeight = 200 + 'px';
+                }
+                
+                balloon.css('width', newWidth);
+                balloon.css('height', newHeight);
+            }
+
+            function handleClick() {
+                const balloon = $('#balloon');
+                inflate(balloon);
+                changeBalloonCol(balloon, 1);
+            }
+
+            function handleLeave() {
+                const balloon = $('#balloon');
+                const currentWidth = balloon.css('width');
+                const currentHeight = balloon.css('height');
+                const currentColor = balloon.css('background-color');
+
+                if (parseFloat(currentWidth) > 200) {
+                    balloon.css('width', parseFloat(currentWidth) - 5 + 'px');
+                    balloon.css('height', parseFloat(currentHeight) - 5 + 'px');
+                }
+
+                changeBalloonCol(balloon, -1);
+            }
+
+            $('#balloon').click(handleClick);
+            $('#balloon').mouseleave(handleLeave);
+        });
+    </script>
 </head>
 <body>
     <div id="balloon"></div>
