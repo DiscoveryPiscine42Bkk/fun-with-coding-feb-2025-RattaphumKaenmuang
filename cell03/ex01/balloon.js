@@ -39,8 +39,8 @@ function handleLeave() {
     currentColor = window.getComputedStyle(balloon).backgroundColor;
 
     if (currentWidth > '200px') {
-        balloon.style.width = parseFloat(currentWidth) - 10 + 'px';
-        balloon.style.height = parseFloat(currentHeight) - 10 + 'px';
+        balloon.style.width = parseFloat(currentWidth) - 5 + 'px';
+        balloon.style.height = parseFloat(currentHeight) - 5 + 'px';
     }
 
     if (currentColor === 'rgb(255, 0, 0)') {

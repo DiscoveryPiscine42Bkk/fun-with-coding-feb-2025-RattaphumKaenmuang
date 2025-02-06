@@ -40,8 +40,8 @@ $(document).ready(function() {
         const currentColor = balloon.css('background-color');
 
         if (parseFloat(currentWidth) > 200) {
-            balloon.css('width', parseFloat(currentWidth) - 10 + 'px');
-            balloon.css('height', parseFloat(currentHeight) - 10 + 'px');
+            balloon.css('width', parseFloat(currentWidth) - 5 + 'px');
+            balloon.css('height', parseFloat(currentHeight) - 5 + 'px');
         }
 
         if (currentColor === 'rgb(255, 0, 0)') {
