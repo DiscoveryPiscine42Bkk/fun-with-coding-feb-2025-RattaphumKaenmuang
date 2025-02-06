@@ -6,7 +6,26 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="backgroound.css">
-    <script src="backrgroound.js"></script>
+    <script>
+        $(document).ready(function() {
+            function getRandomCol() {
+                const letters = '0123456789ABCDEF';
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            function changeBGCol() {
+                $('body').css('background-color', getRandomCol());
+            }
+
+            $('#bg-button').click(function() {
+                changeBGCol();
+            });
+        });
+    </script>
 </head>
 <body>
     <button id="bg-button">Click me!</button>
